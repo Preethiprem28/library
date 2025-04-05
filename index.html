@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Library Management</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    table {
+      width: 80%;
+      margin: 30px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Library Management System</h1>
+
+  <div class="form-container">
+    <form id="bookForm">
+      <div class="form-group">
+        <label for="bookName">Book Name</label>
+        <input type="text" id="bookName" name="bookName" required>
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" required>
+      </div>
+      <button type="submit">Add Book</button>
+    </form>
+  </div>
+
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th>Book Name</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Book entries will be inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById('bookForm');
+    const tableBody = document.querySelector('#bookTable tbody');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const bookName = document.getElementById('bookName').value.trim();
+      const author = document.getElementById('author').value.trim();
+
+      if (bookName && author) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${bookName}</td>
+          <td>${author}</td>
+        `;
+        tableBody.appendChild(row);
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
